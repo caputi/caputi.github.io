@@ -67,7 +67,3 @@
           }
         }, 1000);
     }
-
-// CARREGAR PÁGINA
-
-    body.style.display = "block";

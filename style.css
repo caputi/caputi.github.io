@@ -175,8 +175,29 @@
         background-color: var(--bg);
         overflow-x: hidden;
 
-        display: none; /* não deixa a página aparecer antes do js carregar,
-                          porque isso buga o darkmode */
+    }
+
+    #index ::selection,
+    header ::selection,
+    footer ::selection { /*  h i d e   s e l e c t i o n  */
+
+        color: currentColor;
+        background: none;
+
+    }
+
+
+    #about main ::selection { /*  c o r   d a s   s e l e ç õ e s  */
+
+        background-color: var(--about-accentcolor);
+        color: var(--bg);
+
+    }
+
+    #contact main ::selection { /*  c o r   d a s   s e l e ç õ e s  */
+
+        background-color: var(--contact-accentcolor);
+        color: var(--bg);
 
     }
 
@@ -196,13 +217,6 @@
         width: 100vw;
 
         z-index: 1; /* > main (0) */
-
-    }
-
-    header ::selection, #index ::selection { /*  h i d e   s e l e c t i o n  */
-
-        color: currentColor;
-        background: none;
 
     }
 
@@ -506,12 +520,6 @@
     ABOUT
     */
 
-    #about main ::selection { /*  c o r   d a s   s e l e ç õ e s  */
-
-        background-color: var(--about-accentcolor);
-        color: var(--bg);
-
-    }
 
     .banner {
 
