@@ -175,6 +175,9 @@
         background-color: var(--bg);
         overflow-x: hidden;
 
+        display: none; /* não deixa a página aparecer antes do js carregar,
+                          porque isso buga o darkmode */
+
     }
 
     /*
@@ -877,6 +880,7 @@
         width: 100%;
 
         font-family: 'DM Mono', monospace;
+        color: var(--text);
 
         background: var(--bg);
 
@@ -892,6 +896,7 @@
         padding: 0.8em 2ch;
 
         font-family: 'DM Mono', monospace;
+        color: var(--text);
 
         background: var(--bg);
     }
