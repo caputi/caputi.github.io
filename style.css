@@ -1,26 +1,43 @@
-    /* */
+    /*  SUMARIO  -  ctrl+f case sensitive para pular à seção
 
+        TEMAS
+        GERAL
+        HEADER
+        ABOUT
+        SCROLLBAR
+        CONTATO
+        FOOTER
 
+    */
 
     /* 'dm mono', monospace : 300, 400, 500 */
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
     /* 'cantarel', sans serif : 400, 700, normal e italic */
     @import url('https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-    :root {
+    @media (max-width: 700px) {
 
-        font-size: 62.5%; /* 1rem = 10px */
+        :root {
+            font-size: 42%;
+        }
+
+    }
+
+    @media (min-width: 700px) {
+
+        :root {
+            font-size: 62.5%; /* 1rem = 10px */
+        }
+
+    }
+
+    :root {
 
         scroll-behavior: smooth;
         scroll-padding: 10rem;
 
         /* cores grayscale - claro ao escuro */
         --white: hsl(0, 0%, 99%);
-
-        --gray80: hsl(0, 0%, 80%);
-        --gray60: hsl(0, 0%, 60%);
-        --gray50: hsl(0, 0%, 50%);
-        --gray20: hsl(0, 0%, 20%);
         --gray10: hsl(0, 0%, 10%);
 
         /* cores coloridas */
@@ -56,6 +73,9 @@
         --about-accentcolor: var(--green);
         --about-accentcolor-light: var(--light-green);
 
+        /* contact page */
+        --contact-accentcolor: pink;
+
     }
 
     .dark { /*   t e m a   e s c u r o   */
@@ -77,6 +97,9 @@
         /* about page */
         --about-accentcolor: var(--green);
         --about-accentcolor-light: var(--light-green);
+
+        /* contact page */
+        --contact-accentcolor: pink;
 
     }
 
@@ -129,9 +152,7 @@
 
         /* theme transition */
         transition: background-color 500ms ease-in-out,
-                    color 100ms ease-in-out,
-                    border-color 500ms ease
-                    ;
+                    color 100ms ease-in-out;
 
     }
 
@@ -153,12 +174,6 @@
         font-family: 'DM Mono', monospace;
         background-color: var(--bg);
         overflow-x: hidden;
-
-    }
-
-    body#index {
-
-        overflow-y: hidden;
 
     }
 
@@ -208,7 +223,16 @@
 
     header svg { /*  l o g o  */
 
-        width: 1.5rem; /* 15px */ /* wip */
+        width: 4rem;
+        padding-top: 1rem;
+
+        transition: 800ms ease-in-out;
+
+    }
+
+    header svg:hover {
+
+        transform: rotate(360deg);
 
     }
 
@@ -255,9 +279,15 @@
 
     }
 
-    body#about li:nth-child(even) a:hover {
+    #about li:nth-child(even) a:hover {
 
         background: var(--about-accentcolor);
+
+    }
+
+    #contact li:nth-child(even) a:hover {
+
+        background: var(--contact-accentcolor);
 
     }
 
@@ -280,38 +310,44 @@
     INDEX
     */
 
-    .imagem { /*  c o n t a i n e r  */
+    #index {
+
+        overflow-y: hidden;
+
+    }
+
+    .container {
 
         width: 100vw;
         height: calc(100vh - 11rem); /* 100% de altura - header */
 
         position: relative;
 
+        overflow: hidden;
+
     }
 
-    .imagem svg {
+    .container svg {
 
         height: 110%;
 
         position: absolute;
         bottom: -7%;
 
-        animation: load 700ms ease-out both;
-        animation-delay: 2500ms;
+        animation: load 600ms ease-in-out both;
 
     }
 
     @keyframes load {
 
-        from {opacity: 0; left: 37%;}
-        to {opacity: 1; left: 42%;}
+        from {opacity: 0; left: 50%}
+        to {opacity: 1; left: 45%}
 
     }
 
     #hoodie {
 
         transition: 200ms;
-        cursor: pointer;
 
     }
 
@@ -348,118 +384,118 @@
     }
 
     #index h1 {
-        font-size: 7rem;
+
+        font-size: 8rem;
+        color: var(--text);
+
         overflow: hidden;
         white-space: nowrap;
-        cursor: default;
-        color: var(--text);
-        margin: 0 2ch;
 
+        cursor: default;
+
+        margin: 0 2ch;
         position: absolute;
-        left: calc(50vw - 8ch);
+        left: 0;
+
     }
 
     #index #bem {
-        animation: typebem 1s steps(8),
-                   typingbar 1s 1 alternate,
-                   h1slide 1s both;
-        animation-delay: 0s, 0s, 2500ms;
-        top: calc(40% - 11rem);
+
+        animation: typebem 1s steps(8) both,
+                   typingbar 1s 1 alternate;
+        top: 5rem;
+
     }
 
     #index #vinda {
         animation: typevinda 1400ms steps(12) both,
-                   typingbar 1s infinite,
-                   h1slide 1s both;
-        animation-delay: 1s, 1s, 2500ms;
-        top: calc(50% - 11rem);
+                   typingbar 1s infinite;
+        animation-delay: 1s;
+        top: 15rem;
 
     }
 
     @keyframes typebem {
+
         from {width: 0}
         to {width: 8ch}
+
     }
 
     @keyframes typingbar {
+
         from, to {border-right: none}
         50% {border-right: 0.3rem solid var(--text)}
+
     }
 
     @keyframes typevinda {
+
         from {width: 0}
         to {width: 12ch}
-    }
 
-    @keyframes h1slide {
-        from {}
-        to {left: 0}
     }
 
     #timer {
-        font-size: 7rem;
-        padding: 2ch;
+
+        font-size: 4rem;
+        margin-top: 5rem;
+
         background: var(--kda);
-        color: var(--bg);
+        color: var(--gray10);
 
-        height: 1em;
-        line-height: 1em;
-
-        border: 0.2rem solid black;
-        animation: timer-load 1s both;
-        animation-delay: 2600ms;
-    }
-
-    @keyframes timer-load {
-        from {opacity: 0; margin: 0}
-        to {opacity: 1; margin: 4rem 0}
-    }
-
-    /* header #notif-bar {
-
-        background: var(--opposite-bg);
-        color: var(--opposite-text);
-
-        height: 2rem;
-        line-height: 2rem;
-
-        font-size: 1.3rem;
+        width: 16ch;
+        padding: 1ch;
+        border-radius: 4rem;
 
         cursor: default;
 
-        z-index: 10;
+    }
 
-    } */
+    @keyframes timer-load {
 
-    /* p {
+        from {opacity: 0; left: -10%}
+        to {opacity: 1; left: 0}
 
-        overflow: hidden;
+    }
+
+    .container div {
+
         position: absolute;
-        top: 0;
+        bottom: 20%;
+
+        font-size: 2rem;
+        margin-left: 8rem;
+
+        width: 34ch;
+        text-align: center;
+
+        animation: timer-load 800ms ease-out both;
+        animation-delay: 2200ms;
+
+        color: var(--text);
 
     }
 
-    p#typing1 {
+    .container div a {
 
-        animation: typing 20s steps(40) infinite both;
+        text-align: center;
+        font-weight: bolder;
+        text-decoration: underline;
+
+        margin-bottom: 5rem;
 
     }
 
-    p#typing2 {
+    .container div a {
 
-        overflow: hidden;
-        animation: typing 20s steps(40) infinite both;
-        animation-delay: 10s;
+        transition: 400ms;
 
-    } */
+    }
 
-    @keyframes typing {
+    .container div a:hover {
 
-        0% {width: 0; left: 50vw;}
-        30% {width: 40ch; left: calc(50vw - 20ch);}
-        40% {width: 40ch; left: calc(50vw - 20ch);}
-        50% {width: 0; left: 50vw}
-        100% {width: 0; left: 50vw}
+        font-size: 1.1em;
 
     }
 
@@ -467,7 +503,7 @@
     ABOUT
     */
 
-    main ::selection { /*  c o r   d a s   s e l e ç õ e s  */
+    #about main ::selection { /*  c o r   d a s   s e l e ç õ e s  */
 
         background-color: var(--about-accentcolor);
         color: var(--bg);
@@ -482,7 +518,7 @@
         height: calc(100vh - 18rem);
         width: 90vw;
 
-        background: var(--gray80);
+        background: var(--opposite-bg);
         border: 0.2rem solid var(--opposite-bg);
 
         overflow: hidden;
@@ -496,33 +532,16 @@
         min-width: 102%;
         min-height: 112%;
 
-        /* tirar as bordinha pq nao consegui fazer
-        isso no illustrator sem zoar a imagem */
         left: -1%;
         top: -6%;
 
     }
 
     .light .remove-on-lightmode {
+
         fill: none;
         stroke: none;
-    }
 
-    .cls-1, .cls-5 {
-    fill: var(--bg);
-    }
-    .cls-1, .cls-4 {
-    stroke: var(--opposite-bg);
-    }
-    .cls-1, .cls-3, .cls-4 {
-    stroke-miterlimit: 10;
-    }
-    .cls-2, .cls-3, .cls-4 {
-    fill: var(--opposite-bg);
-    }
-    .cls-3 {
-    stroke: var(--opposite-bg);
-    stroke-width: 3px;
     }
 
     .banner div {
@@ -541,49 +560,63 @@
     }
 
     .banner h1 {
+
         color: var(--text);
         font-size: 4em;
+
         animation: typewrite-nossamissao 3s steps(12) infinite;
+
         overflow: hidden;
         white-space: nowrap;
+
     }
 
     @keyframes typewrite-nossamissao {
+
         0% {width: 0}
         60% {width: 12ch}
         80% {width: 12ch}
         100% {width: 0}
+
     }
 
     .banner h1::first-letter {
+
         color: var(--about-accentcolor);
+
     }
 
     article div {
+
         text-align: center;
         font-weight: bolder;
-        color: var(--about-accentcolor);
+        color: var(--about-accentcolor-light);
         text-decoration: underline;
+
         margin-bottom: 5rem;
 
     }
 
     article div a {
+
         transition: 400ms;
+
     }
 
     article div a:hover {
+
         font-size: 1.1em;
+
     }
 
     article {
 
         font-family: Cantarell, sans-serif;
 
-        font-size: 1.8rem; /* 18px */
+        font-size: 1.8rem;
 
-        margin: 3em 6em; /* x1.8rem = 5.4rem 10.8rem = 54px 108px */
-        line-height: 2em; /* x1.8rem = 3.6rem = 36px */
+        margin: 3em 6em; /* x1.8rem = 5.4rem */
+        line-height: 2em; /* x1.8rem = 3.6rem */
 
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -639,7 +672,7 @@
 
         cursor: default;
 
-        }
+    }
 
     article span {
 
@@ -663,99 +696,15 @@
 
     article p {
 
-        margin: 1em; /* x1.8rem = 18px */
+        margin: 1em; /* x1.8rem */
 
     }
 
     article p::first-letter {
 
         font-weight: bolder;
-        margin-left: 2em; /* x1.8rem = 3.6rem = 36px */
+        margin-left: 2em; /* x1.8rem = 3.6rem */
 
-    }
-
-    footer {
-
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: auto 2rem;
-        grid-row-gap: 5rem;
-
-        position: relative;
-        height: 30rem;
-
-        border-top: 0.2rem solid var(--text);
-        width: 90vw;
-        margin: auto;
-
-        color: var(--text);
-
-    }
-
-    footer div:first-child {
-
-        grid-column: 1;
-        grid-row: 1;
-
-        border-right: 0.2rem solid var(--opposite-bg);
-        margin-top: 3rem;
-
-        display: flex;
-        justify-content: space-around;
-
-        font-size: 1.5rem;
-        font-weight: bolder;
-
-    }
-
-    footer div:last-child {
-
-        grid-column: 1 / span 2;
-        grid-row: 2;
-
-        position: absolute;
-        bottom: 0;
-
-        width: 90vw;
-        height: 4rem;
-
-        background: var(--about-accentcolor);
-
-    }
-
-    form[name=newsletter] {
-
-        grid-row: 1;
-        grid-column: 2;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-    }
-
-    form[name=newsletter] label {
-        font-size: 2rem;
-        text-align: center;
-        padding-bottom: 1rem;
-    }
-
-    form[name=newsletter] input[type=email] {
-        width: 45vw;
-    }
-
-    form[name=newsletter] input[type=submit] {
-        font-size: 1.5rem;
-        width: 14ch;
-        background: var(--about-accentcolor-light);
-
-        transition: all 200ms ease-out;
-    }
-
-    form[name=newsletter] input[type=submit]:hover {
-        transform: scale(1.1);
-        background: var(--about-accentcolor);
     }
 
     #scroll-top {
@@ -781,13 +730,15 @@
     #scroll-top p {
 
         font-size: 2rem;
-        padding-bottom: 1rem;
         text-align: center;
+        color: var(--text);
+
+        padding-bottom: 1rem;
+
         opacity: 0;
         transition: 300ms ease-out;
-        overflow: hidden;
 
-        color: var(--text);
+        overflow: hidden;
 
     }
 
@@ -830,15 +781,25 @@
 
     ::-webkit-scrollbar-thumb {
 
-        background: var(--about-accentcolor);
         border: 0.7rem solid var(--bg);
         border-radius: 1rem;
 
     }
 
-    ::-webkit-scrollbar-thumb:hover {
+    #about::-webkit-scrollbar-thumb {
 
         background: var(--about-accentcolor);
+
+    }
+
+    #contact::-webkit-scrollbar-thumb {
+
+        background: var(--contact-accentcolor);
+
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+
         border: 0.6rem solid var(--bg);
 
     }
@@ -847,75 +808,300 @@
     CONTATO
     */
 
-    .contactFlexbox {
-
-        display: flex;
-        justify-content: space-around;
-
-    }
-
-    body#contact h1 {
-
-        text-align: center;
-
-    }
-
-    #contact form {
+    form#contato {
 
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        height: 70vh; /* wip */
-        width: 50vw; /* wip */
+        width: 50vw;
 
-        margin: auto;
+        margin: 1rem auto;
+        margin-bottom: 6rem;
     }
 
-    label { /* labels */
+    form#contato h1 {
+
+        color: var(--text);
+        font-size: 4rem;
+
+        animation: typewrite-faleconosco 3s steps(13) infinite;
+
+        overflow: hidden;
+        white-space: nowrap;
+
+    }
+
+    @keyframes typewrite-faleconosco {
+
+        0% {width: 0}
+        60% {width: 13ch}
+        80% {width: 13ch}
+        100% {width: 0}
+
+    }
+
+
+    form#contato div {
+
+        margin: 1rem 0;
+
+    }
+
+    form#contato div:last-child,
+    form#contato h1 {
+
+        align-self: center;
+
+    }
+
+    label {
+
         font-size: 1.4rem;
-        padding-left: 2ch;
         line-height: 2em;
         font-weight: bolder;
+
+        color: var(--text);
+
+        padding-left: 2ch;
+
     }
 
-    input:not([type=submit]) { /* caixas de input em linha */
+    input:not([type=submit]) {
+
         border-radius: 1em;
         border: 1.5px solid var(--text);
+
         height: 3rem;
         padding: 0 2ch;
         width: 100%;
+
         font-family: 'DM Mono', monospace;
+
+        background: var(--bg);
+
     }
 
-    textarea { /* caixa de input de texto longo */
+    textarea {
+
         border-radius: 1em;
         border: 1.5px solid var(--text);
+
         height: 20rem;
         width: 100%;
         padding: 0.8em 2ch;
+
         font-family: 'DM Mono', monospace;
+
+        background: var(--bg);
     }
 
-    input[type=submit] { /* botão de enviar */
-        border-radius: 1em;
+    input[type=submit] {
+
+        border-radius: 4rem;
         border: none;
+
         width: 9ch;
-        margin: 0 auto;
-        color: white;
-        background-color: #851414;
-        font-size: 1.8rem;
         padding: 0.6em;
-        margin-top: 1em;
+        margin-top: 1rem;
+
+        color: var(--bg);
+        background-color: var(--contact-accentcolor);
+
+        font-size: 1.8rem;
         font-family: 'DM Mono', monospace;
+
         cursor: pointer;
+
+        transition: 200ms;
+
     }
 
-    input:not([type=submit]):focus, textarea:focus { /* inputs em hover */
+    #contact input:not([type=submit]):focus, textarea:focus {
+
         outline: none;
-        border-color: #C56464;
+        border-color: var(--contact-accentcolor);
+
     }
 
-    input[type=submit]:hover { /* botão enviar em hover */
-        background-color: #C56464;
+    input[type=submit]:hover {
+
+        transform: scale(1.1);
+
+    }
+
+    /*
+    FOOTER
+    */
+
+    footer {
+
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto 2rem;
+        grid-row-gap: 5rem;
+
+        position: relative;
+        height: 30rem;
+
+        border-top: 0.2rem solid var(--text);
+        width: 90vw;
+        margin: auto;
+
+        color: var(--text);
+
+    }
+
+    footer div:first-child {
+
+        grid-column: 1;
+        grid-row: 1;
+
+        border-right: 0.2rem solid var(--opposite-bg);
+        margin-top: 3rem;
+        padding-right: 5rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        font-size: 1.5rem;
+        font-weight: bolder;
+        white-space: nowrap;
+
+    }
+
+    footer div:last-child {
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        grid-column: 1 / span 2;
+        grid-row: 2;
+
+        position: absolute;
+        bottom: 0;
+
+        width: 90vw;
+        height: 4rem;
+        line-height: 4rem;
+
+        font-size: 1.5rem;
+        color: var(--bg);
+
+    }
+
+    footer a {
+
+        width: 3rem;
+        height: 3rem;
+
+    }
+
+    #about footer div:last-child {
+
+        background: var(--about-accentcolor);
+
+    }
+
+    #contact footer div:last-child {
+
+        background: var(--contact-accentcolor);
+
+    }
+
+    form#newsletter {
+
+        grid-row: 1;
+        grid-column: 2;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    form#newsletter label {
+
+        font-size: 2rem;
+        text-align: center;
+
+        padding-bottom: 1rem;
+
+    }
+
+    form#newsletter input[type=email] {
+
+        width: 45vw;
+
+    }
+
+    form#newsletter input[type=submit] {
+
+        font-size: 1.5rem;
+        width: 14ch;
+        background: var(--about-accentcolor-light);
+
+        transition: all 200ms ease-out;
+
+    }
+
+    form#newsletter input[type=submit]:hover {
+
+        transform: scale(1.1);
+        background: var(--about-accentcolor);
+
+    }
+
+    #contact form#newsletter input[type=submit] {
+
+        background: var(--contact-accentcolor);
+
+    }
+
+    form#newsletter input:not([type=submit]):focus, textarea:focus {
+
+        outline: none;
+        border-color: var(--about-accentcolor);
+
+    }
+
+    #contact form#newsletter input:not([type=submit]):focus, textarea:focus {
+
+        border-color: var(--contact-accentcolor);
+
+    }
+
+    #caputi1, #caputi2 {
+
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+
+    }
+
+    #caputi1 {
+
+        animation: typing 16s steps(30) infinite both;
+
+    }
+
+    #caputi2 {
+
+        animation: typing 16s steps(30) infinite both;
+        animation-delay: 8s;
+
+    }
+
+    @keyframes typing {
+
+        0% {width: 0; left: 45vw;}
+        30% {width: 30ch; left: calc(45vw - 15ch);}
+        40% {width: 30ch; left: calc(45vw - 15ch);}
+        50% {width: 0; left: 45vw}
+        100% {width: 0; left: 45vw}
+
     }
